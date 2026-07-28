@@ -4,7 +4,7 @@ import Hero from '../components/Hero'
 import Programs from '../components/Programs'
 import About from '../components/About'
 import Campus from '../components/Campus'
-import Testimonials from '../components/testimonials'
+import Testimonials from '../components/Testimonials'
 import Footer from '../components/Footer'
 
 const Home = () => {
