@@ -52,7 +52,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-white text-4xl z-[60] cursor-pointer"
+            className="lg:hidden text-white text-4xl z-60 cursor-pointer"
           >
             {menuOpen ? <HiX /> : <HiMenuAlt3 />}
           </button>
@@ -72,7 +72,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 right-0 w-[280px] h-screen bg-blue-900 shadow-2xl z-50 transition-transform duration-300 lg:hidden ${
+        className={`fixed top-0 right-0 w-70 h-screen bg-blue-900 shadow-2xl z-50 transition-transform duration-300 lg:hidden ${
           menuOpen
             ? "translate-x-0"
             : "translate-x-full"
