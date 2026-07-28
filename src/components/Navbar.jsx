@@ -33,32 +33,31 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scroll
-            ? "bg-blue-900/95 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto h-20 px-5 sm:px-8 lg:px-10 flex items-center justify-between">
+  className={`fixed top-0 left-0 w-screen z-50 transition-all duration-300 ${
+    scroll
+      ? "bg-blue-900/90 backdrop-blur-md shadow-lg"
+      : "bg-transparent"
+  }`}
+>
+  <div className="w-full max-w-7xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
 
-          {/* Logo */}
-          <Logo />
+    <Logo />
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex">
-            <Menu />
-          </div>
+    {/* Desktop Menu */}
+    <div className="hidden lg:flex">
+      <Menu />
+    </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-white text-4xl z-60 cursor-pointer"
-          >
-            {menuOpen ? <HiX /> : <HiMenuAlt3 />}
-          </button>
+    {/* Mobile Menu Button */}
+    <button
+      onClick={() => setMenuOpen(!menuOpen)}
+      className="lg:hidden text-white text-3xl p-2"
+    >
+      {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+    </button>
 
-        </div>
-      </nav>
+  </div>
+</nav>
 
       {/* Overlay */}
       <div

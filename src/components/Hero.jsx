@@ -3,7 +3,7 @@ import { HiArrowRight } from "react-icons/hi2";
 
 const Hero = () => {
   return (
-    <section
+   <section
       className="relative h-screen bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${heroImage})`,
