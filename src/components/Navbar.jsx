@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+
 import Logo from "./navContent/Logo";
 import Menu from "./navContent/Menu";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,39 +18,83 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 h-16  ${
-        scroll
-          ? "bg-blue-900/90 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className=" mx-auto w-full flex items-center justify-between px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-        <Logo />
-        <div className="hidden lg:flex">
-          <Menu />
-        </div>
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden text-white text-3xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <HiX /> : <HiMenuAlt3 />}
-        </button>
-      </div>
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
 
-      {/* Mobile Menu */}
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          menuOpen ? "max-h-96" : "max-h-0"
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [menuOpen]);
+
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scroll
+            ? "bg-blue-900/95 backdrop-blur-md shadow-lg"
+            : "bg-transparent"
         }`}
       >
-        <div className="bg-blue-900/95 backdrop-blur-md px-6 pb-6">
-          <Menu mobile />
+        <div className="max-w-7xl mx-auto h-20 px-5 sm:px-8 lg:px-10 flex items-center justify-between">
+
+          {/* Logo */}
+          <Logo />
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex">
+            <Menu />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden text-white text-4xl z-[60] cursor-pointer"
+          >
+            {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+          </button>
+
+        </div>
+      </nav>
+
+      {/* Overlay */}
+      <div
+        onClick={() => setMenuOpen(false)}
+        className={`fixed inset-0 bg-black/50 transition-all duration-300 z-40 lg:hidden ${
+          menuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible"
+        }`}
+      />
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 right-0 w-[280px] h-screen bg-blue-900 shadow-2xl z-50 transition-transform duration-300 lg:hidden ${
+          menuOpen
+            ? "translate-x-0"
+            : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-end p-5">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="text-white text-4xl"
+          >
+            <HiX />
+          </button>
+        </div>
+
+        <div className="px-8">
+          <Menu
+            mobile={true}
+            closeMenu={() => setMenuOpen(false)}
+          />
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 

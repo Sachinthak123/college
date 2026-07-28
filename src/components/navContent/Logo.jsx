@@ -1,9 +1,11 @@
 import React from "react";
 import logo from "../../assets/Logo.png";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
     <div className="flex items-center gap-3 cursor-pointer">
+      <Link to="/">
       <img
         src={logo}
         alt="College Logo"
@@ -19,6 +21,7 @@ const Logo = () => {
           Excellence in Education
         </p>
       </div>
+      </Link>
     </div>
   );
 };
