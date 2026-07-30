@@ -10,7 +10,8 @@ import CourseDetails from './pages/CourseDetails'
 const App = () => {
   return (
     <>
-   <Navbar />
+   <div className="overflow-x-hidden">
+    <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,6 +23,7 @@ const App = () => {
       </Routes>
 
       <Footer />
+   </div>
     </>
   )
 }
